@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #02191d;
+  min-height: 100vh;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 2rem;
+  border-radius: 2rem;
+  border: 1px solid #0e464f;
+  background: #08252b;
+}
+.ticket-option-container {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid #07373f;
+  background: #052228;
+}

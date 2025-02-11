@@ -1,0 +1,36 @@
+.poster-container {
+  display: flex;
+  padding: 1rem 1.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1.5rem;
+  border-right: 2px solid var(--dark-blue);
+  border-bottom: 2px solid var(--dark-blue);
+  border-left: 2px solid var(--dark-blue);
+  background: radial-gradient(
+      57.42% 106.59% at 14.02% 32.06%,
+      rgba(36, 160, 181, 0.2) 0%,
+      rgba(36, 160, 181, 0) 100%
+    ),
+    rgba(10, 12, 17, 0.1);
+  backdrop-filter: blur(7px);
+}
+
+.poster-container p {
+  color: var(--color-grey-98, #fafafa);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+}
+.event-title {
+  color: var(--color-grey-98, #fafafa);
+  text-align: center;
+  font-family: "Road Rage";
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 3rem */
+}
