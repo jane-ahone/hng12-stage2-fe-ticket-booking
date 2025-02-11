@@ -5,10 +5,15 @@
   --dark-blue: #07373f;
   --teal: #24a0b5;
 }
-body {
+/* Universal Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
   color: white;
   font-family: JejuMyeongjo, sans-serif;
   line-height: 1.5;
@@ -17,9 +22,8 @@ body {
 
 img {
   max-width: 100%;
-  height: auto;
+  display: block;
 }
-
 a {
   text-decoration: none;
   color: inherit;

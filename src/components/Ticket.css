@@ -1,0 +1,73 @@
+p {
+  color: var(--color-grey-98, #fafafa);
+}
+
+.ticket-container {
+  border-radius: 0.54119rem 0.15463rem 0.15463rem 0.54119rem;
+  background: #0e464f;
+  padding: 1rem;
+  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: fit-content(200px) auto min-content;
+}
+
+.ticket-details {
+  flex-grow: 1;
+}
+
+.ticket-limit {
+  font-family: Roboto;
+  font-size: 0.46388rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 150%; /* 0.69588rem */
+}
+.event-name {
+  font-family: "Road Rage";
+  font-size: 1.23706rem;
+  line-height: 81%; /* 1.002rem */
+}
+.ticket-details .location,
+.ticket-details .date {
+  font-family: Roboto;
+  font-size: 0.54119rem;
+  line-height: 150%; /* 0.81181rem */
+}
+
+.ticket-details .decoration {
+  font-family: "Road Rage";
+  font-size: 1.36438rem;
+  line-height: 68%; /* 0.92775rem */
+  opacity: 0.2;
+}
+.ticket-details-summary {
+  display: flex;
+  align-items: center;
+
+  /* transform: rotate(0.75turn); */
+}
+.ticket-details-summary p {
+  margin: 0;
+  /* transform: rotate(-90deg); */
+  writing-mode: sideways-lr;
+}
+
+.ticket-details-summary .ticket-type p {
+  transform: rotate(0.5turn);
+  justify-self: flex-end;
+  text-align: center;
+  font-family: "Road Rage";
+  font-size: 1.85563rem;
+  line-height: 130%; /* 2.41231rem */
+}
+.ticket-details-summary p {
+  font-family: Roboto;
+  font-size: 0.30925rem;
+  line-height: 150%; /* 0.46388rem */
+}
+.ticket-details-summary-name {
+  font-family: "Road Rage";
+  font-size: 0.682rem;
+
+  line-height: 81%; /* 0.55244rem */
+}
