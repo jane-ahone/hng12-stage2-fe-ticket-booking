@@ -1,0 +1,11 @@
+.upload-container {
+  align-self: center;
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 2rem;
+  background: #0e464f;
+}

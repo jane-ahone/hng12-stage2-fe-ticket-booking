@@ -3,6 +3,7 @@
 #root {
   --color-grey-98: #fafafa;
   --dark-blue: #07373f;
+  --teal: #24a0b5;
 }
 body {
   margin: 0;
@@ -11,6 +12,7 @@ body {
   color: white;
   font-family: JejuMyeongjo, sans-serif;
   line-height: 1.5;
+  background: #02191d;
 }
 
 img {

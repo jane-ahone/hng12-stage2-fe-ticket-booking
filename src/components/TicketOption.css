@@ -5,16 +5,23 @@
   border-radius: 0.75rem;
   color: var(--color-grey-98);
   border: 1px solid #197686;
-  background: #197686;
+  background-color: transparent;
+  justify-content: space-between;
 }
 .sub-btn {
   width: 5rem;
   padding: 0.1rem;
   border-radius: 0.5rem;
   border: 1px solid #2ba4b9;
-  background: #0e464f;
   color: var(--color-grey-98, #fafafa);
   font-family: Roboto;
   font-size: 1.25rem;
+  background-color: transparent;
   font-weight: 600;
+}
+.ticket-option-btn:active {
+  background: #197686;
+}
+.ticket-option-btn:hover {
+  background: #197686;
 }

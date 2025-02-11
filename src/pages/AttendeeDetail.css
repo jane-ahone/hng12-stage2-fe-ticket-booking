@@ -1,0 +1,25 @@
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.attendee-details-label {
+  margin: 1rem 0;
+}
+
+.attendee-details-label,
+#attendee-details-input {
+  color: var(--color-grey-98, #fafafa);
+  display: block;
+  font-family: Roboto;
+  font-size: 1rem;
+  line-height: 150%; /* 1.5rem */
+}
+#attendee-details-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--Radius-reg-2, 0.75rem);
+  border-radius: var(--Radius-reg-2, 0.75rem);
+  border: 1px solid #07373f;
+  background-color: transparent;
+}

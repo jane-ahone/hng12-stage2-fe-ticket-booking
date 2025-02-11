@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  background: #02191d;
   min-height: 100vh;
   gap: 1.5rem;
   padding: 2rem 1rem;
@@ -24,4 +23,57 @@
   border-radius: 1.5rem;
   border: 1px solid #07373f;
   background: #052228;
+}
+#ticket-no-select {
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  color: var(--off-white);
+  padding: var(--Radius-reg-2, 0.75rem);
+  border-radius: var(--Radius-reg-2, 0.75rem);
+  border: 1px solid #07373f;
+}
+.ticket-no-select-label {
+  margin: 1rem 0;
+  display: block;
+}
+.btn {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #0e464f;
+  color: var(--off-white);
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filled {
+  background: var(--teal);
+}
+.unfilled {
+  background-color: transparent;
+  color: var(--teal);
+}
+
+@media (min-width: 765px) {
+  .main-container {
+    align-self: center;
+  }
+  .ticket-option-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .btn-container {
+    flex-direction: row;
+    align-items: center;
+    height: 3rem;
+    padding: 3rem;
+    gap: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid #0e464f;
+    background: #041e23;
+  }
 }
