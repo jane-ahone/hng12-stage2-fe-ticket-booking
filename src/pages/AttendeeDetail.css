@@ -3,8 +3,28 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+.phase-name.attendee-details {
+  font-size: 2rem;
+}
 .attendee-details-label {
   margin: 1rem 0;
+}
+.main-container-attendee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attendee-details-main {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 2rem;
+  border: 1px solid #0e464f;
+  background: #08252b;
 }
 
 .attendee-details-label,

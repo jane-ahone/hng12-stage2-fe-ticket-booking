@@ -1,14 +1,20 @@
 import "./TicketOption.css";
 
-const TicketOption = () => {
+interface TicketOptionProps {
+  tier: string;
+  accessType: string;
+  rating: string;
+}
+
+const TicketOption = ({ tier, accessType, rating }: TicketOptionProps) => {
   return (
     <>
       <button className="ticket-option-btn">
+        <p className="tier">{tier}</p>
         <div>
-          <p>Regular Access</p>
-          <p>20 left!</p>
+          <p className="access-type">{accessType} </p>
+          <p className="rating">{rating} </p>
         </div>
-        <button className="sub-btn">Free</button>
       </button>
     </>
   );

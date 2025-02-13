@@ -2,9 +2,11 @@ import "./TicketReady.css";
 import Header from "../components/Header";
 import Line from "../components/Line";
 import { CustomButton } from "./TicketSelection";
+import { useNavigate } from "react-router-dom";
 import Ticket from "../components/Ticket";
 
 const TicketReady = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       <Header />
@@ -22,7 +24,9 @@ const TicketReady = () => {
 
         <div className="btn-container">
           <CustomButton className="filled">Download Ticket</CustomButton>
-          <CustomButton className="unfilled">Book Another Ticket</CustomButton>
+          <CustomButton className="unfilled" handleClick={() => navigate("/")}>
+            Book Another Ticket
+          </CustomButton>
         </div>
       </div>
     </div>
