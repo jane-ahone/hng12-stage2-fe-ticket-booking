@@ -48,9 +48,7 @@ p {
   font-size: 0.625rem;
   line-height: 150%; /* 0.9375rem */
 }
-.image-container {
-  /* display: none; */
-}
+
 .img-container {
   width: 8.75rem;
   border-radius: 0.75rem;
@@ -96,6 +94,9 @@ p {
 }
 .table-last-row {
   grid-column: span 2;
+}
+.avatar {
+  border-radius: 0.25rem;
 }
 
 @media (max-width: 320px) {

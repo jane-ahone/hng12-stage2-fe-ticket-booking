@@ -19,9 +19,39 @@
   border-radius: 2rem;
   border: 4px solid rgba(36, 160, 181, 0.5);
   background: #0e464f;
+  width: 15rem;
+  height: 15rem;
+}
+.img-preview {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+.img-preview:hover {
+  opacity: 0.7;
 }
 
-@media (min-width: 768px) {
+.upload-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 12.5rem;
+}
+
+.remove-img {
+  text-align: right;
+  font-size: 0.5rem;
+  font-weight: 100;
+}
+.remove-img:hover {
+}
+
+@media (min-width: 1024px) {
+  .upload-box {
+    background: rgba(0, 0, 0, 0.2);
+  }
   .upload-container {
   }
 }

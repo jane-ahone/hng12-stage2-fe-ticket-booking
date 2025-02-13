@@ -1,4 +1,4 @@
-.ticket-option-btn {
+.ticket-option {
   display: flex;
   padding: 0.75rem;
   flex-direction: column;
@@ -38,9 +38,10 @@
   text-align: left;
 }
 
-.ticket-option-btn:active {
+.selected,
+.ticket-option:active {
   background: #197686;
 }
-.ticket-option-btn:hover {
-  background: #197686;
+.ticket-option:hover {
+  background: #2c545b;
 }

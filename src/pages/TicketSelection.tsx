@@ -4,6 +4,7 @@ import Poster from "../components/Poster";
 import TicketOption from "../components/TicketOption";
 import { useNavigate } from "react-router-dom";
 import "./TicketSelection.css";
+import { useState } from "react";
 
 interface ButtonProps {
   disabled?: boolean;
@@ -31,6 +32,12 @@ export const CustomButton = ({
 
 const TicketSelection = () => {
   const navigate = useNavigate();
+  const [selectedAccess, setSelectedAccess] = useState<string | null>();
+
+  const handleTicketSelection = (accessType: string) => {
+    setSelectedAccess(accessType); // Update the selected ticket
+  };
+
   return (
     <div className="container">
       <Header />
@@ -49,9 +56,23 @@ const TicketSelection = () => {
               tier="Free"
               accessType="REGULAR ACCESS"
               rating="20/52"
+              isSelected={selectedAccess === "REGULAR ACCESS"}
+              onSelect={handleTicketSelection}
             />
-            <TicketOption tier="$150" accessType="VIP ACCESS" rating="20/52" />
-            <TicketOption tier="$200" accessType="VVIP ACCESS" rating="20/52" />
+            <TicketOption
+              tier="$150"
+              accessType="VIP ACCESS"
+              rating="20/52"
+              isSelected={selectedAccess === "VIP ACCESS"}
+              onSelect={handleTicketSelection}
+            />
+            <TicketOption
+              tier="$200"
+              accessType="VVIP ACCESS"
+              rating="20/52"
+              isSelected={selectedAccess === "VVIP ACCESS"}
+              onSelect={handleTicketSelection}
+            />
           </div>
         </div>
         <div>
@@ -66,6 +87,7 @@ const TicketSelection = () => {
           <CustomButton className="unfilled">Cancel</CustomButton>
           <CustomButton
             className="filled"
+            disabled={!selectedAccess}
             handleClick={() => navigate("/attendee-details")}
           >
             Next

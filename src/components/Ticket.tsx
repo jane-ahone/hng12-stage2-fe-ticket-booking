@@ -23,10 +23,9 @@ const Ticket = () => {
     }
   }, []);
 
-  console.log(avatar);
   return (
     <div className="ticket-container">
-      <img src="/bg.png" className="image-container" />
+      <img src="/bg.png" className="image-frame" />
       <div className="ticket-summary-container">
         <div className="ticket-summary-text-container">
           <p className="summary-name">Techember Fest ”25</p>
@@ -34,7 +33,7 @@ const Ticket = () => {
           <p className="summary-date">📅 March 15, 2025 | 7:00 PM</p>
         </div>
         <div className="img-container">
-          <img alt="avatar" src={avatar ? avatar : ""}></img>
+          <img alt="avatar" className="avatar" src={avatar ? avatar : ""}></img>
         </div>
         <div className="table">
           <div>

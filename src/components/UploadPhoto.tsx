@@ -20,6 +20,8 @@ const UploadPhoto = ({
   const [previewUrl, setPreviewUrl] = useState("");
   const [error, setError] = useState("");
 
+  console.log(error, previewUrl);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : "";
     setError("");
@@ -55,9 +57,8 @@ const UploadPhoto = ({
       const formData = new FormData();
       formData.append("file", selectedFile);
       formData.append("upload_preset", "event-booking-system");
-      formData.append("folder", "avatars"); // Optional: organize uploads in folders
+      formData.append("folder", "avatars");
 
-      // Replace with environment variables
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/dvsppir93/image/upload`,
         {
@@ -82,38 +83,49 @@ const UploadPhoto = ({
   };
 
   useEffect(() => {
-    uploadToCloudinary();
+    if (previewUrl) {
+      uploadToCloudinary();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFile]);
+  }, [previewUrl]);
 
   return (
     <div className="photo-container">
       <p>Upload Profile Photo</p>
-      <div className="upload-container">
-        {previewUrl ? (
-          <>
-            <p onClick={() => setPreviewUrl("")}>Cancel</p>
-            <img src={previewUrl} />
-            {isUploading ? <p>Uploading...</p> : ""}
-          </>
-        ) : (
-          <>
-            <img src="/cloud-download.svg" />
-            <label htmlFor="avatar" style={{ textAlign: "center" }}>
-              Drag & drop or click to upload
-            </label>
-            <input
-              style={{ opacity: 0, position: "absolute" }}
-              onChange={handleInputChange}
-              type="file"
-              id="avatar"
-              name="avatar"
-              accept="image/*"
-            />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-          </>
-        )}
+      {previewUrl ? (
+        <p onClick={() => setPreviewUrl("")} className="remove-img">
+          Remove
+        </p>
+      ) : null}
+      <div className="upload-box">
+        <div
+          className="upload-container"
+          style={previewUrl != "" ? { padding: 0 } : undefined}
+        >
+          {previewUrl ? (
+            <>
+              <img src={previewUrl} className="img-preview" />
+            </>
+          ) : (
+            <>
+              <img src="/cloud-download.svg" />
+              <label htmlFor="avatar" style={{ textAlign: "center" }}>
+                Drag & drop or click to upload
+              </label>
+              <input
+                style={{ opacity: 0, position: "absolute" }}
+                onChange={handleInputChange}
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
+              />
+              {error && <p className="text-red-500 text-sm">{error}</p>}
+            </>
+          )}
+        </div>
       </div>
+      {isUploading ? <p>Uploading...</p> : ""}
     </div>
   );
 };
