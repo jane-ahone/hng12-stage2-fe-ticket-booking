@@ -21,16 +21,16 @@ const TicketReady = () => {
         <div>
           <p className="ticket-booked">Your Ticket is Booked!</p>
           <p className="ticket-booked-download-conf">
-            You can download or Check your email for a copy
+            You can download or check your email for a copy
           </p>
         </div>
         <Ticket />
 
         <div className="btn-container">
-          <CustomButton className="filled">Download Ticket</CustomButton>
           <CustomButton className="unfilled" handleClick={() => navigate("/")}>
             Book Another Ticket
           </CustomButton>
+          <CustomButton className="filled">Download Ticket</CustomButton>
         </div>
       </div>
     </div>

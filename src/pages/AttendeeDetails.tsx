@@ -37,7 +37,7 @@ const CustomInput = ({
           id="attendee-details-input"
           name={name}
           value={value}
-          rows={5}
+          rows={3}
           onChange={handleChange}
         ></textarea>
       ) : (
@@ -68,9 +68,16 @@ const AttendeeDetails = () => {
     const savedData = localStorage.getItem("ticketDetails");
     return savedData
       ? JSON.parse(savedData)
-      : { name: "", email: "", text: "" };
+      : { name: "", email: "", specialRequest: "" };
   });
-  const [errors, setErrors] = useState({ name: "", email: "", text: "" });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    specialRequest: "",
+  });
+  const [selectedFile, setSelectedFile] = useState<File | null>();
+
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("ticketDetails", JSON.stringify(formData));
@@ -94,7 +101,6 @@ const AttendeeDetails = () => {
         ...prevErrors,
         [name]: "",
       }));
-      console.log(result);
       if (!result.success) {
         const errorMsg = result.error.flatten().formErrors;
         setErrors((prevErrors) => ({
@@ -128,43 +134,63 @@ const AttendeeDetails = () => {
           </div>
         </div>
 
-        <UploadPhoto />
+        <UploadPhoto
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
+          isUploading={isUploading}
+          setIsUploading={setIsUploading}
+        />
         <Line value={0} />
 
-        <CustomInput
-          label="Enter your name"
-          name="name"
-          value={formData.name}
-          handleChange={handleInputChange}
-          type="text"
-        />
-        {/* <p>{errors.name}</p> */}
-        <CustomInput
-          label="Enter your email"
-          name="email"
-          value={formData.email}
-          handleChange={handleInputChange}
-          type="email"
-        />
-        {/* {errors.email} */}
-        <CustomInput
-          label="About the project"
-          name="text"
-          value={formData.text}
-          handleChange={handleInputChange}
-          type="textarea"
-        />
-        {/* {errors.text} */}
-      </div>
-      <div className="btn-container">
-        <CustomButton
-          className="filled"
-          disabled={!!(errors.name || errors.text || errors.email)}
-          handleClick={handleSubmit}
-        >
-          Get My Free Ticket
-        </CustomButton>
-        <CustomButton className="unfilled">Back</CustomButton>
+        <div>
+          <CustomInput
+            label="Enter your name"
+            name="name"
+            value={formData.name}
+            handleChange={handleInputChange}
+            type="text"
+          />
+          <p className="error-msg">{errors.name}</p>
+        </div>
+        <div>
+          <CustomInput
+            label="Enter your email"
+            name="email"
+            value={formData.email}
+            handleChange={handleInputChange}
+            type="email"
+          />
+          <p className="error-msg">{errors.email}</p>
+        </div>
+        <div>
+          <CustomInput
+            label="About the project"
+            name="text"
+            value={formData.text}
+            handleChange={handleInputChange}
+            type="textarea"
+          />
+          <p className="error-msg">{errors.specialRequest}</p>
+        </div>
+        <div className="btn-container">
+          <CustomButton className="unfilled" handleClick={() => navigate("/")}>
+            Back
+          </CustomButton>
+          <CustomButton
+            className="filled"
+            disabled={
+              !!(
+                errors.name ||
+                errors.specialRequest ||
+                errors.email ||
+                isUploading
+              )
+            }
+            handleClick={handleSubmit}
+          >
+            Get My Free Ticket
+          </CustomButton>
+        </div>
       </div>
     </div>
   );

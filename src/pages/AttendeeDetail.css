@@ -35,6 +35,11 @@
   justify-content: space-between;
   align-items: center;
 }
+.error-msg {
+  margin-top: 0.5rem;
+  color: red;
+  opacity: 0.7;
+}
 
 /* .attendee-details-main {
   display: flex;
@@ -61,4 +66,11 @@
   border-radius: var(--Radius-reg-2, 0.75rem);
   border: 1px solid #07373f;
   background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .main-container-attendee {
+    width: 70%;
+    align-self: center;
+  }
 }

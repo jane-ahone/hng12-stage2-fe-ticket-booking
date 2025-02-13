@@ -75,10 +75,12 @@
   gap: 1rem;
 }
 
-.filled {
+.filled,
+.unfilled:active {
   background: var(--teal);
 }
-.unfilled {
+.unfilled,
+.filled:active {
   background-color: transparent;
   color: var(--teal);
 }

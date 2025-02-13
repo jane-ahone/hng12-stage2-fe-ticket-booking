@@ -1,3 +1,7 @@
+.ticket-container {
+  align-self: center;
+}
+
 .ticket-ready-heading {
   display: grid;
   grid-template-columns: auto auto;

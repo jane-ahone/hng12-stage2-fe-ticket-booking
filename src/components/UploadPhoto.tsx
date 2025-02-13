@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import "./UploadPhoto.css";
 
-const UploadPhoto = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>();
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+interface UploadPhotoProps {
+  selectedFile: File | null | undefined;
+  setSelectedFile: React.Dispatch<
+    React.SetStateAction<File | null | undefined>
+  >;
+  isUploading: boolean;
+  setIsUploading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const UploadPhoto = ({
+  selectedFile,
+  setSelectedFile,
+  isUploading,
+  setIsUploading,
+}: UploadPhotoProps) => {
+  // const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
   const [error, setError] = useState("");
-
-  console.log(selectedFile);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : "";
@@ -61,9 +71,8 @@ const UploadPhoto = () => {
       }
 
       const data = await response.json();
-      console.log(data.secure_url);
       localStorage.setItem("avatar-url", data.secure_url);
-      setUploadedImageUrl(data.secure_url);
+      // setUploadedImageUrl(data.secure_url);
     } catch (err) {
       setError("Failed to upload image. Please try again.");
       console.error("Upload error:", err);
@@ -78,23 +87,14 @@ const UploadPhoto = () => {
   }, [selectedFile]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        padding: "1.5rem 1.5rem 3rem 1.5rem",
-        borderRadius: "1.5rem",
-        border: "1px solid #07373F",
-        backgroundColor: "#052228",
-      }}
-    >
+    <div className="photo-container">
       <p>Upload Profile Photo</p>
       <div className="upload-container">
         {previewUrl ? (
           <>
             <p onClick={() => setPreviewUrl("")}>Cancel</p>
             <img src={previewUrl} />
+            {isUploading ? <p>Uploading...</p> : ""}
           </>
         ) : (
           <>

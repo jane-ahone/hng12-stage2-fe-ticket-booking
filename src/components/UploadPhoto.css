@@ -1,4 +1,15 @@
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid #07373f;
+  background-color: #052228;
+}
+
 .upload-container {
+  align-self: center;
   display: flex;
   padding: 1.5rem;
   flex-direction: column;
@@ -8,4 +19,9 @@
   border-radius: 2rem;
   border: 4px solid rgba(36, 160, 181, 0.5);
   background: #0e464f;
+}
+
+@media (min-width: 768px) {
+  .upload-container {
+  }
 }
