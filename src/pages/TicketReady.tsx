@@ -10,17 +10,21 @@ const TicketReady = () => {
   return (
     <div className="container">
       <Header />
-      <div className="main-container">
-        <div>
-          <h2>Attendee Details</h2>
-          <p>Step 3/3</p>
-          <Line value={100} />
+      <div className="main-container ticket-ready-container">
+        <div className="ticket-ready-heading">
+          <h2 className="ticket-ready-title">Ready</h2>
+          <p className="ticket-ready-count">Step 3/3</p>
+          <div className="progress-bar-container">
+            <Line value={100} />
+          </div>
         </div>
         <div>
-          <h3>Your Ticket is Booked!</h3>
-          <p>You can download or check your email for a copy</p>
-          <Ticket />
+          <p className="ticket-booked">Your Ticket is Booked!</p>
+          <p className="ticket-booked-download-conf">
+            You can download or Check your email for a copy
+          </p>
         </div>
+        <Ticket />
 
         <div className="btn-container">
           <CustomButton className="filled">Download Ticket</CustomButton>

@@ -118,52 +118,53 @@ const AttendeeDetails = () => {
   return (
     <div className="container">
       <Header />
-      <div className="main-container">
+      <div className="main-container-attendee">
         <div className="main-container-attendee-header">
           <p className="phase-name attendee-details">Attendee Details</p>
-          <p className="step-number">Step 2/3</p>
-        </div>
-        <Line value={67} />
-        <div className="attendee-details-main">
-          <UploadPhoto />
-          <Line value={0} />
-          <div className="label-container">
-            <CustomInput
-              label="Enter your name"
-              name="name"
-              value={formData.name}
-              handleChange={handleInputChange}
-              type="text"
-            />
-            <p>{errors.name}</p>
-            <CustomInput
-              label="Enter your email"
-              name="email"
-              value={formData.email}
-              handleChange={handleInputChange}
-              type="email"
-            />
-            {errors.email}
-            <CustomInput
-              label="About the project"
-              name="text"
-              value={formData.text}
-              handleChange={handleInputChange}
-              type="textarea"
-            />
-            {errors.text}
-          </div>
-          <div className="btn-container">
-            <CustomButton
-              className="filled"
-              disabled={!!(errors.name || errors.text || errors.email)}
-              handleClick={handleSubmit}
-            >
-              Get My Free Ticket
-            </CustomButton>
-            <CustomButton className="unfilled">Back</CustomButton>
+          <p className="step-number-attendee">Step 2/3</p>
+
+          <div className="line-attendee">
+            <Line value={67} />
           </div>
         </div>
+
+        <UploadPhoto />
+        <Line value={0} />
+
+        <CustomInput
+          label="Enter your name"
+          name="name"
+          value={formData.name}
+          handleChange={handleInputChange}
+          type="text"
+        />
+        {/* <p>{errors.name}</p> */}
+        <CustomInput
+          label="Enter your email"
+          name="email"
+          value={formData.email}
+          handleChange={handleInputChange}
+          type="email"
+        />
+        {/* {errors.email} */}
+        <CustomInput
+          label="About the project"
+          name="text"
+          value={formData.text}
+          handleChange={handleInputChange}
+          type="textarea"
+        />
+        {/* {errors.text} */}
+      </div>
+      <div className="btn-container">
+        <CustomButton
+          className="filled"
+          disabled={!!(errors.name || errors.text || errors.email)}
+          handleClick={handleSubmit}
+        >
+          Get My Free Ticket
+        </CustomButton>
+        <CustomButton className="unfilled">Back</CustomButton>
       </div>
     </div>
   );

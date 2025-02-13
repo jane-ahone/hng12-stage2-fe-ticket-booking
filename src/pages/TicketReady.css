@@ -1,0 +1,39 @@
+.ticket-ready-heading {
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticket-ready-container {
+  padding: 2rem 1.5rem;
+}
+.ticket-ready-title {
+  color: #fff;
+  font-family: JejuMyeongjo;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.ticket-ready-count,
+.ticket-booked,
+.ticket-booked-download-conf {
+  color: var(--color-grey-98, #fafafa);
+  font-family: Roboto;
+}
+
+.ticket-booked-download-conf {
+  text-align: center;
+  line-height: 150%; /* 1.5rem */
+}
+.ticket-ready-count {
+  line-height: 150%; /* 1.5rem */
+}
+.progress-bar-container {
+  grid-column: span 2;
+}
+.ticket-booked {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}

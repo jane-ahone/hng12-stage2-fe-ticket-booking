@@ -83,7 +83,7 @@ const UploadPhoto = () => {
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
-        padding: "1.5rem",
+        padding: "1.5rem 1.5rem 3rem 1.5rem",
         borderRadius: "1.5rem",
         border: "1px solid #07373F",
         backgroundColor: "#052228",
@@ -103,7 +103,7 @@ const UploadPhoto = () => {
               Drag & drop or click to upload
             </label>
             <input
-              style={{ opacity: 0 }}
+              style={{ opacity: 0, position: "absolute" }}
               onChange={handleInputChange}
               type="file"
               id="avatar"
