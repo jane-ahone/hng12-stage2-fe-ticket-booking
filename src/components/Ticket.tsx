@@ -16,7 +16,7 @@ const Ticket = () => {
     const avatar = localStorage.getItem("avatar-url");
     console.log(avatar);
     if (avatar) {
-      setAvatar(JSON.parse(avatar));
+      setAvatar(avatar);
     }
     if (storedDetails) {
       setUserDetails(JSON.parse(storedDetails)); // Parse if it's an object
@@ -28,9 +28,11 @@ const Ticket = () => {
     <div className="ticket-container">
       <img src="/bg.png" className="image-container" />
       <div className="ticket-summary-container">
-        <p className="summary-name">Techember Fest ”25</p>
-        <p className="summary-location">📍 04 Rumens road, Ikoyi, Lagos</p>
-        <p className="summary-date">📅 March 15, 2025 | 7:00 PM</p>
+        <div className="ticket-summary-text-container">
+          <p className="summary-name">Techember Fest ”25</p>
+          <p className="summary-location">📍 04 Rumens road, Ikoyi, Lagos</p>
+          <p className="summary-date">📅 March 15, 2025 | 7:00 PM</p>
+        </div>
         <div className="img-container">
           <img alt="avatar" src={avatar ? avatar : ""}></img>
         </div>
@@ -60,7 +62,7 @@ const Ticket = () => {
             </p>
           </div>
         </div>
-        <img src="/bar-code.png" />
+        <img src="/bar-code.png" className="barcode" />
       </div>
     </div>
   );
