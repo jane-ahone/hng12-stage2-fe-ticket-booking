@@ -7,6 +7,12 @@ import Ticket from "../components/Ticket";
 
 const TicketReady = () => {
   const navigate = useNavigate();
+
+  const handlePageNavigation = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <div className="container">
       <Header />
@@ -27,7 +33,7 @@ const TicketReady = () => {
         <Ticket />
 
         <div className="btn-container">
-          <CustomButton className="unfilled" handleClick={() => navigate("/")}>
+          <CustomButton className="unfilled" handleClick={handlePageNavigation}>
             Book Another Ticket
           </CustomButton>
           <CustomButton className="filled">Download Ticket</CustomButton>

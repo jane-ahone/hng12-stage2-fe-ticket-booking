@@ -47,6 +47,7 @@ p {
   font-family: Roboto;
   font-size: 0.625rem;
   line-height: 150%; /* 0.9375rem */
+  text-align: center;
 }
 
 .img-container {
@@ -66,7 +67,6 @@ p {
   background: #08343c;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 2.5rem;
 }
 .table > * {
   border: 1px solid #12464e;
@@ -97,6 +97,9 @@ p {
 }
 .avatar {
   border-radius: 0.25rem;
+  width: 8.75rem;
+  height: 8.75rem;
+  object-fit: cover;
 }
 
 @media (max-width: 320px) {

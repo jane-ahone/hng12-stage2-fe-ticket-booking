@@ -92,22 +92,19 @@ const UploadPhoto = ({
   return (
     <div className="photo-container">
       <p>Upload Profile Photo</p>
-      {previewUrl ? (
-        <p onClick={() => setPreviewUrl("")} className="remove-img">
-          Remove
-        </p>
-      ) : null}
       <div className="upload-box">
+        {previewUrl ? (
+          <p onClick={() => setPreviewUrl("")} className="remove-img">
+            Remove
+          </p>
+        ) : null}
         <div
           className="upload-container"
           style={previewUrl != "" ? { padding: 0 } : undefined}
         >
-          {previewUrl ? (
-            <>
-              <img src={previewUrl} className="img-preview" />
-            </>
-          ) : (
-            <>
+          <>
+            {previewUrl ? <img src={previewUrl} className="img-preview" /> : ""}
+            <div className="upload-instructions">
               <img src="/cloud-download.svg" />
               <label htmlFor="avatar" style={{ textAlign: "center" }}>
                 Drag & drop or click to upload
@@ -120,9 +117,9 @@ const UploadPhoto = ({
                 name="avatar"
                 accept="image/*"
               />
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-            </>
-          )}
+            </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+          </>
         </div>
       </div>
       {isUploading ? <p>Uploading...</p> : ""}
