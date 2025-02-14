@@ -117,7 +117,6 @@ const AttendeeDetails = () => {
   };
 
   const handleSubmit = () => {
-    console.log(errors.avatar, selectedFile);
     try {
       formSchema.parse(formData);
       if (!selectedFile) {

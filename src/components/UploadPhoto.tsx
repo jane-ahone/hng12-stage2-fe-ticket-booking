@@ -18,15 +18,12 @@ const UploadPhoto = ({
   setIsUploading,
   errorMsg,
 }: UploadPhotoProps) => {
-  // const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
-  const [error, setError] = useState(errorMsg || ""); // Ensure default is empty string
-
+  const [isHovered, setIsHovered] = useState(false);
+  const [error, setError] = useState(errorMsg || "");
   useEffect(() => {
-    setError(errorMsg || ""); // Update state when errorMsg prop changes
+    setError(errorMsg || "");
   }, [errorMsg]);
-
-  console.log(error);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : "";
@@ -107,13 +104,24 @@ const UploadPhoto = ({
         <div
           className="upload-container"
           style={previewUrl != "" ? { padding: 0 } : undefined}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <>
             {previewUrl ? (
               <>
-                <img src={previewUrl} className="img-preview" />
-                <div className="hover-image">
-                  {" "}
+                <img src={previewUrl} className="img-preview" />{" "}
+                {isUploading ? (
+                  <span aria-live="polite" className="upload-msg">
+                    Uploading...
+                  </span>
+                ) : (
+                  ""
+                )}
+                <div
+                  className="hover-image "
+                  style={{ opacity: !isUploading && isHovered ? 1 : 0 }}
+                >
                   <img src="/cloud-download.svg" />
                   <label htmlFor="avatar" className="change-image-label">
                     Change image
@@ -141,7 +149,6 @@ const UploadPhoto = ({
           </>
         </div>
       </div>
-      {isUploading ? <p aria-live="polite">Uploading...</p> : ""}
     </div>
   );
 };

@@ -6,6 +6,7 @@
   border-radius: 1.5rem;
   border: 1px solid #07373f;
   background-color: #052228;
+  position: relative;
 }
 
 .upload-container {
@@ -33,6 +34,9 @@
 }
 .img-preview:hover {
   background-color: #052228;
+  .hover-image {
+    opacity: 0;
+  }
 }
 
 .upload-box {
@@ -49,7 +53,8 @@
   flex-direction: column;
   align-items: center;
 }
-.hover-image {
+.hover-image,
+.upload-msg {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,17 +65,22 @@
   justify-content: center;
   border-radius: 2rem;
   background-color: #0000004f;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-
+.upload-msg {
+  opacity: 1;
+}
 .remove-img {
   position: absolute;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
   text-align: right;
   font-size: 0.5rem;
   font-weight: 100;
   cursor: pointer;
 }
+
 @media (min-width: 1024px) {
   .upload-box {
     background: rgba(0, 0, 0, 0.2);
