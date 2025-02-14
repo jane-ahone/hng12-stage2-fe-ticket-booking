@@ -16,6 +16,11 @@ interface CustomInputProps {
   >;
   type: string;
 }
+interface FormData {
+  name: string;
+  email: string;
+  text: string;
+}
 
 const CustomInput = ({
   name,
@@ -26,26 +31,25 @@ const CustomInput = ({
 }: CustomInputProps) => {
   return (
     <div>
-      <label
-        className="attendee-details-label"
-        htmlFor="attendee-details-input"
-      >
+      <label className="attendee-details-label" htmlFor={name}>
         {label}
       </label>
       {type == "textarea" ? (
         <textarea
-          id="attendee-details-input"
+          className="attendee-details-input"
           name={name}
           value={value}
+          placeholder="Textarea"
           rows={3}
           onChange={handleChange}
         ></textarea>
       ) : (
         <input
-          id="attendee-details-input"
+          className="attendee-details-input"
           name={name}
           value={value}
           type={type}
+          autoComplete="true"
           onChange={handleChange}
         />
       )}
@@ -56,27 +60,28 @@ const CustomInput = ({
 const formSchema = z.object({
   name: z
     .string()
-    .regex(/^[A-Za-z]+$/, "Name must contain only alphabets")
-    .min(1, "Name is required"),
+    // .regex(/^[A-Za-z]+$/, "Name must contain only alphabets")
+    .min(1, "Name is required")
+    .max(10, "Maximum of 10 characters"),
   email: z.string().email("Invalid email format"),
   text: z.string().optional(),
 });
 
 const AttendeeDetails = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState(() => {
+  const [formData, setFormData] = useState<FormData>(() => {
     const savedData = localStorage.getItem("ticketDetails");
     return savedData
       ? JSON.parse(savedData)
-      : { name: "", email: "", specialRequest: "" };
+      : { name: "", email: "", text: "" };
   });
   const [errors, setErrors] = useState({
     name: "",
     email: "",
-    specialRequest: "",
+    text: "",
+    avatar: "",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>();
-
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
@@ -112,10 +117,14 @@ const AttendeeDetails = () => {
   };
 
   const handleSubmit = () => {
+    console.log(errors.avatar, selectedFile);
     try {
       formSchema.parse(formData);
+      if (!selectedFile) {
+        setErrors({ ...errors, avatar: "No image found" });
+        throw new Error();
+      }
       navigate("/checkout");
-      // localStorage.removeItem("ticketDetails");
     } catch (error) {
       console.log(error);
     }
@@ -139,6 +148,7 @@ const AttendeeDetails = () => {
           setSelectedFile={setSelectedFile}
           isUploading={isUploading}
           setIsUploading={setIsUploading}
+          errorMsg={errors.avatar}
         />
         <Line value={0} />
 
@@ -150,27 +160,33 @@ const AttendeeDetails = () => {
             handleChange={handleInputChange}
             type="text"
           />
-          <p className="error-msg">{errors.name}</p>
+          <p className="error-msg" aria-live="assertive">
+            {errors.name}
+          </p>
         </div>
         <div>
           <CustomInput
-            label="Enter your email"
+            label="Enter your email *"
             name="email"
             value={formData.email}
             handleChange={handleInputChange}
             type="email"
           />
-          <p className="error-msg">{errors.email}</p>
+          <p className="error-msg" aria-live="assertive">
+            {errors.email}{" "}
+          </p>
         </div>
         <div>
           <CustomInput
-            label="About the project"
+            label="Special request?"
             name="text"
             value={formData.text}
             handleChange={handleInputChange}
             type="textarea"
           />
-          <p className="error-msg">{errors.specialRequest}</p>
+          <p className="error-msg" aria-live="assertive">
+            {errors.text}
+          </p>
         </div>
         <div className="btn-container">
           <CustomButton className="unfilled" handleClick={() => navigate("/")}>
@@ -179,12 +195,16 @@ const AttendeeDetails = () => {
           <CustomButton
             className="filled"
             disabled={
-              !!(
-                errors.name ||
-                errors.specialRequest ||
-                errors.email ||
-                isUploading
-              )
+              !formData.name.trim() ||
+              !formData.email.trim() ||
+              isUploading ||
+              !!(errors.name || errors.text || errors.email)
+            }
+            aria-disabled={
+              !formData.name.trim() ||
+              !formData.email.trim() ||
+              isUploading ||
+              !!(errors.name || errors.text || errors.email)
             }
             handleClick={handleSubmit}
           >

@@ -4,6 +4,7 @@
   --color-grey-98: #fafafa;
   --dark-blue: #07373f;
   --teal: #24a0b5;
+  min-width: 319px;
 }
 /* Universal Reset */
 * {
@@ -27,4 +28,82 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 1.5rem;
+  padding: 0.75rem;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 2rem;
+  border-radius: 2rem;
+  border: 1px solid #0e464f;
+  background: #08252b;
+}
+.main-container-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.phase-name {
+  color: #fff;
+  font-family: JejuMyeongjo;
+  font-size: 1.5rem;
+}
+.step-number {
+  color: var(--color-grey-98, #fafafa);
+  font-family: Roboto;
+}
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #0e464f;
+  color: white;
+  font-family: JejuMyeongjo;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filled,
+.unfilled:active,
+.unfilled:hover {
+  background: var(--teal);
+  color: white;
+}
+.unfilled,
+.filled:active,
+.filled:hover {
+  background-color: transparent;
+  color: var(--teal);
+}
+.btn:disabled {
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+  cursor: not-allowed;
+}
+@media (min-width: 765px) {
+  .main-container {
+    align-self: center;
+    width: 70%;
+  }
+
+  .btn-container {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
+    border-radius: 1.5rem;
+    background: transparent;
+  }
 }

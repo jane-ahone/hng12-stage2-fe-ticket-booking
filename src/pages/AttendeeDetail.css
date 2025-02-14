@@ -15,10 +15,7 @@
 }
 
 .phase-name.attendee-details {
-  font-size: 1.2rem;
-}
-.step-number-attendee {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
 }
 
 .line-attendee {
@@ -52,14 +49,14 @@
 } */
 
 .attendee-details-label,
-#attendee-details-input {
+.attendee-details-input {
   color: var(--color-grey-98, #fafafa);
   display: block;
   font-family: Roboto;
   font-size: 1rem;
   line-height: 150%; /* 1.5rem */
 }
-#attendee-details-input {
+.attendee-details-input {
   width: 100%;
   box-sizing: border-box;
   padding: var(--Radius-reg-2, 0.75rem);

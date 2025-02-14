@@ -1,10 +1,8 @@
 .poster-container {
   display: flex;
   padding: 1rem 1.5rem;
-  gap: 0.5rem;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
   border-radius: 1.5rem;
   border-right: 2px solid var(--dark-blue);
   border-bottom: 2px solid var(--dark-blue);
@@ -32,9 +30,7 @@
   text-align: center;
   font-family: "Road Rage";
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 400;
   line-height: 100%; /* 3rem */
-}
-.container-1 .event-description {
-  font-size: 0.79rem;
 }

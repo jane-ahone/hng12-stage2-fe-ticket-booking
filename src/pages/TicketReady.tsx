@@ -4,9 +4,20 @@ import Line from "../components/Line";
 import { CustomButton } from "./TicketSelection";
 import { useNavigate } from "react-router-dom";
 import Ticket from "../components/Ticket";
+import { useState } from "react";
 
 const TicketReady = () => {
   const navigate = useNavigate();
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleDownload = () => {
+    setIsClicked(true);
+
+    // Show message for 3 seconds, then reset
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 3000);
+  };
 
   const handlePageNavigation = () => {
     localStorage.clear();
@@ -36,7 +47,15 @@ const TicketReady = () => {
           <CustomButton className="unfilled" handleClick={handlePageNavigation}>
             Book Another Ticket
           </CustomButton>
-          <CustomButton className="filled">Download Ticket</CustomButton>
+
+          <CustomButton
+            className="filled"
+            handleClick={handleDownload}
+            disabled={isClicked}
+            aria-disabled={isClicked}
+          >
+            {isClicked ? "Ticket Downloaded!" : "Download Ticket"}
+          </CustomButton>
         </div>
       </div>
     </div>

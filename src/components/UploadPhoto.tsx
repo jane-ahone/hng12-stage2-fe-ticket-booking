@@ -8,6 +8,7 @@ interface UploadPhotoProps {
   >;
   isUploading: boolean;
   setIsUploading: React.Dispatch<React.SetStateAction<boolean>>;
+  errorMsg: string;
 }
 
 const UploadPhoto = ({
@@ -15,12 +16,17 @@ const UploadPhoto = ({
   setSelectedFile,
   isUploading,
   setIsUploading,
+  errorMsg,
 }: UploadPhotoProps) => {
   // const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(errorMsg || ""); // Ensure default is empty string
 
-  console.log(error, previewUrl);
+  useEffect(() => {
+    setError(errorMsg || ""); // Update state when errorMsg prop changes
+  }, [errorMsg]);
+
+  console.log(error);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : "";
@@ -91,19 +97,32 @@ const UploadPhoto = ({
 
   return (
     <div className="photo-container">
-      <p>Upload Profile Photo</p>
+      <p style={{ marginBottom: "1rem" }}>Upload Profile Photo</p>
+      {previewUrl ? (
+        <p onClick={() => setPreviewUrl("")} className="remove-img">
+          Remove
+        </p>
+      ) : null}
       <div className="upload-box">
-        {previewUrl ? (
-          <p onClick={() => setPreviewUrl("")} className="remove-img">
-            Remove
-          </p>
-        ) : null}
         <div
           className="upload-container"
           style={previewUrl != "" ? { padding: 0 } : undefined}
         >
           <>
-            {previewUrl ? <img src={previewUrl} className="img-preview" /> : ""}
+            {previewUrl ? (
+              <>
+                <img src={previewUrl} className="img-preview" />
+                <div className="hover-image">
+                  {" "}
+                  <img src="/cloud-download.svg" />
+                  <label htmlFor="avatar" className="change-image-label">
+                    Change image
+                  </label>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
             <div className="upload-instructions">
               <img src="/cloud-download.svg" />
               <label htmlFor="avatar" style={{ textAlign: "center" }}>
@@ -117,12 +136,12 @@ const UploadPhoto = ({
                 name="avatar"
                 accept="image/*"
               />
+              {error && <p className="error-msg">{error}</p>}
             </div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
           </>
         </div>
       </div>
-      {isUploading ? <p>Uploading...</p> : ""}
+      {isUploading ? <p aria-live="polite">Uploading...</p> : ""}
     </div>
   );
 };
