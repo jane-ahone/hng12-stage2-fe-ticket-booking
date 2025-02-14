@@ -51,7 +51,7 @@ const Ticket = () => {
               <p className="table-value row-1">{userDetails?.name}</p>
             </div>{" "}
             <div>
-              <p className="table-key">Enter your email*</p>
+              <p className="table-key">Enter your email *</p>
               <p className="table-value row-1">{userDetails?.email}</p>
             </div>{" "}
             <div>
