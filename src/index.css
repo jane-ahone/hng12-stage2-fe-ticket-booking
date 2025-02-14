@@ -66,6 +66,7 @@ a {
   border: 1px solid #0e464f;
   color: white;
   font-family: JejuMyeongjo;
+  cursor: pointer;
 }
 
 .btn-container {
