@@ -75,6 +75,7 @@ const AttendeeDetails = () => {
       ? JSON.parse(savedData)
       : { name: "", email: "", text: "" };
   });
+  const [ticketType] = useState(localStorage.getItem("access-type"));
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -207,7 +208,7 @@ const AttendeeDetails = () => {
             }
             handleClick={handleSubmit}
           >
-            Get My Free Ticket
+            Get My {ticketType?.split(" ")[0]} Ticket
           </CustomButton>
         </div>
       </div>
